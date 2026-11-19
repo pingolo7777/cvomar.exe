@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Guzmán Torres | Ingeniería Química & Tecnología</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0b1120;
+            --bg-surface: #131c31;
+            --bg-surface-hover: #19243e;
+            --primary: #3b82f6;      /* Azul cobalto vibrante */
+            --secondary: #10b981;    /* Verde esmeralda tecnológico */
+            --accent: #6366f1;       /* Índigo profesional */
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: rgba(148, 163, 184, 0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.65;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.12), transparent 35%),
+                radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.10), transparent 35%);
+            background-attachment: fixed;
+        }
+
+        /* Navegación */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 1.1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        main {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4.5rem 0 4rem;
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 3rem;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.4rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #93c5fd;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--secondary);
+        }
+
+        .hero h1 {
+            font-size: 3.1rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dynamic-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            min-height: 1.6rem;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            max-width: 580px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.45);
+        }
+
+        .btn-secondary {
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-surface-hover);
+            border-color: var(--primary);
+        }
+
+        /* Tarjeta Ejecutiva de Resumen */
+        .profile-summary-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.75rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .summary-header {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .summary-row {
+            margin-bottom: 1rem;
+        }
+
+        .summary-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .summary-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: block;
+        }
+
+        .summary-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Secciones */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            margin-bottom: 2.2rem;
+        }
+
+        .section-title span {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* Panel Interactivo de Enfoque */
+        .interactive-panel {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .panel-tabs {
+            display: flex;
+            background: rgba(11, 17, 32, 0.5);
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .tab-trigger {
+            padding: 1rem 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .tab-trigger:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .tab-trigger.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: rgba(59, 130, 246, 0.06);
+        }
+
+        .panel-body {
+            padding: 2rem;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeSlide 0.35s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-pane h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .tab-pane p {
+            color: var(--text-secondary);
+            max-width: 780px;
+        }
+
+        /* Grid de Formación */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .card-meta {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--secondary);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.25rem 0.7rem;
+            border-radius: 6px;
+            margin-bottom: 0.9rem;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .card .institution {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #93c5fd;
+            margin-bottom: 0.85rem;
+            display: block;
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        /* Barras de Competencias e Idiomas */
+        .progress-group {
+            margin-bottom: 1.4rem;
+        }
+
+        .progress-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.92rem;
+            font-weight: 600;
+            margin-bottom: 0.45rem;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background: rgba(148, 163, 184, 0.15);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        /* Contacto */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .contact-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .contact-card span {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-card strong, .contact-card a {
+            font-size: 0.98rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+
+        .action-copy {
+            background: transparent;
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            padding: 0.4rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: fit-content;
+            transition: all 0.2s ease;
+        }
+
+        .action-copy:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 820px) {
+            .hero { grid-template-columns: 1fr; padding-top: 3rem; }
+            .hero h1 { font-size: 2.4rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="brand">OMAR GUZMÁN<span>.</span></div>
+            <div class="nav-links">
+                <a href="#enfoque">Enfoque</a>
+                <a href="#formacion">Formación</a>
+                <a href="#competencias">Competencias</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Presentación -->
+        <section class="hero">
+            <div>
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    Instituto Tecnológico de Celaya • 1er Semestre
+                </div>
+                <h1>Omar <span>Guzmán Torres</span></h1>
+                <div class="dynamic-subtitle" id="role-typer"></div>
+                <p>
+                    Estudiante de primer semestre de Ingeniería Química con enfoque analítico y vocación por el aprendizaje continuo. Interesado en integrar las ciencias exactas y los procesos químicos con herramientas tecnológicas emergentes como la Inteligencia Artificial Generativa.
+                </p>
+                <div class="cta-group">
+                    <a href="#enfoque" class="btn btn-primary">Explorar Perfil</a>
+                    <a href="#contacto" class="btn btn-secondary">Información de Contacto</a>
+                </div>
+            </div>
+
+            <!-- Ficha Técnica Ejecutiva -->
+            <div class="profile-summary-card">
+                <div class="summary-header">Ficha Académica</div>
+                <div class="summary-row">
+                    <span class="summary-label">Programa Académico</span>
+                    <span class="summary-value">Ingeniería Química (1° Semestre)</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Institución</span>
+                    <span class="summary-value">Instituto Tecnológico de Celaya</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Certificación Destacada</span>
+                    <span class="summary-value">Fundamentos de IA Generativa (Microsoft)</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Ubicación</span>
+                    <span class="summary-value">Celaya, Guanajuato, México</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel Interactivo -->
+        <section id="enfoque">
+            <div class="section-title">
+                <span>Áreas de Interés</span>
+                <h2>Perfil y Proyección Académica</h2>
+            </div>
+
+            <div class="interactive-panel">
+                <div class="panel-tabs">
+                    <button class="tab-trigger active" onclick="switchTab(event, 'pane-ing')">Ingeniería Química</button>
+                    <button class="tab-trigger" onclick="switchTab(event, 'pane-ia')">Inteligencia Artificial</button>
+                    <button class="tab-trigger" onclick="switchTab(event, 'pane-aprendizaje')">Metodología de Aprendizaje</button>
+                </div>
+
+                <div class="panel-body">
+                    <div id="pane-ing" class="tab-pane active">
+                        <h3>Fundamentos Científicos y Procesos</h3>
+                        <p>
+                            En esta primera etapa universitaria dentro del Instituto Tecnológico de Celaya, centro mis esfuerzos en consolidar las bases de matemáticas, química y física. Busco comprender los principios que rigen la transformación de la materia para aplicarlos con rigor técnico en futuros proyectos de laboratorio e industria.
+                        </p>
+                    </div>
+
+                    <div id="pane-ia" class="tab-pane">
+                        <h3>Aplicación de Inteligencia Artificial Generativa</h3>
+                        <p>
+                            Acreditado en el curso <strong>"Fundamentos de IA generativa por Microsoft"</strong>, cuento con conocimientos sobre el funcionamiento de modelos fundacionales, estructuración efectiva de instrucciones y criterios éticos para aprovechar herramientas digitales en la investigación, el análisis y la productividad académica.
+                        </p>
+                    </div>
+
+                    <div id="pane-aprendizaje" class="tab-pane">
+                        <h3>Desarrollo Continuo y Adaptabilidad</h3>
+                        <p>
+                            Concibo la etapa universitaria como un proceso constante de adquisición de habilidades. Mantengo una postura receptiva ante nuevos retos académicos y tecnológicos, combinando la disciplina de la ingeniería tradicional con competencias digitales actuales.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formación y Certificaciones -->
+        <section id="formacion">
+            <div class="section-title">
+                <span>Trayectoria</span>
+                <h2>Formación Académica y Certificaciones</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="card-meta">Actualidad • 1er Semestre</span>
+                    <h3>Ingeniería Química</h3>
+                    <span class="institution">Instituto Tecnológico de Celaya</span>
+                    <p>
+                        Formación profesional orientada al diseño, análisis y optimización de procesos químicos e industriales.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <span class="card-meta">Certificación Oficial</span>
+                    <h3>Fundamentos de IA Generativa</h3>
+                    <span class="institution">Microsoft</span>
+                    <p>
+                        Comprensión de los principios de la inteligencia artificial generativa, arquitectura de modelos y uso responsable en entornos profesionales.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <span class="card-meta">Nivel Medio Superior</span>
+                    <h3>Bachillerato</h3>
+                    <span class="institution">Escuela de Nivel Medio Superior de Salvatierra</span>
+                    <p>
+                        Formación preuniversitaria con énfasis en ciencias exactas y preparación para estudios superiores de ingeniería.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Idiomas y Competencias -->
+        <section id="competencias">
+            <div class="section-title">
+                <span>Habilidades</span>
+                <h2>Idiomas y Áreas en Desarrollo</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h3 style="margin-bottom: 1.5rem;">Dominio espanol, ingles intermedio
